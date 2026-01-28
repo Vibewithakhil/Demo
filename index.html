@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Dishika ❤️</title>
+    <title>Dishika - My Love ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -13,8 +13,8 @@
             background: #fff0f3;
             font-family: 'Poppins', sans-serif;
             display: flex; align-items: center; justify-content: center;
-            min-height: 100vh; overflow-x: hidden;
-            background: linear-gradient(-45deg, #ffafbd, #ffc3a0, #ffafbd);
+            min-height: 100vh; overflow: hidden;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
@@ -25,141 +25,113 @@
             100% { background-position: 0% 50%; }
         }
 
-        .storybook {
-            width: 90%; max-width: 450px;
-            background: white; padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        .card {
+            width: 90%; max-width: 400px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(15px);
+            padding: 35px 25px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             position: relative; z-index: 10;
-            transform: translateY(30px); opacity: 0;
-            animation: slideUp 1.5s forwards ease-out;
-            border: 2px solid rgba(255, 182, 193, 0.5);
         }
 
-        @keyframes slideUp {
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .heart-float {
-            position: absolute; color: #ff4d6d;
-            font-size: 20px; animation: floatUp 4s linear infinite;
-            top: 100vh; z-index: 1; pointer-events: none;
-        }
-
-        @keyframes floatUp {
-            to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        /* Purani wali Profile Photo style */
+        .profile-pic {
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.2);
+            object-fit: cover;
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            color: #ff4d6d; font-size: 2.5rem; margin-bottom: 20px;
-            text-align: center;
+            color: #d63384; font-size: 2.5rem; margin-bottom: 15px;
         }
 
-        .message-section {
-            line-height: 1.8; color: #555; font-size: 0.95rem;
-            margin-bottom: 25px; text-align: left;
-            border-left: 3px solid #ff4d6d; padding-left: 15px;
+        .message {
+            font-size: 0.95rem; line-height: 1.7;
+            color: #444; margin-bottom: 25px;
+            text-align: left; background: rgba(255, 255, 255, 0.3);
+            padding: 20px; border-radius: 20px;
+            border-left: 4px solid #ff4d6d;
         }
 
-        /* Voice Note Section */
-        .voice-section {
-            background: #fff0f3; padding: 15px;
-            border-radius: 50px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 30px; transition: 0.3s;
-            border: 1px dashed #ff4d6d;
+        .voice-btn {
+            background: #ff4d6d; color: white;
+            padding: 12px 35px; border-radius: 50px;
+            cursor: pointer; display: inline-flex;
+            align-items: center; justify-content: center;
+            font-weight: 500; transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
+            border: none; outline: none;
+            font-family: 'Poppins', sans-serif;
         }
-        .voice-section:hover { background: #ffe3e8; }
-        .play-btn { color: #ff4d6d; font-weight: 600; margin-left: 10px; }
+        .voice-btn:active { transform: scale(0.95); }
 
-        /* Aesthetic Image Slider */
-        .photo-gallery {
-            width: 100%; height: 280px;
-            border-radius: 15px; overflow: hidden;
-            position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        /* Floating Hearts */
+        .heart-particle {
+            position: absolute; color: #ff4d6d;
+            font-size: 18px; animation: floatUp 5s linear infinite;
+            top: 100vh; pointer-events: none;
         }
-        .photo-gallery img {
-            width: 100%; height: 100%; object-fit: cover;
-            position: absolute; opacity: 0; transition: 1s ease-in-out;
+        @keyframes floatUp {
+            to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
-        .photo-gallery img.active { opacity: 1; }
 
         .signature {
-            text-align: right; margin-top: 15px;
-            font-family: 'Dancing Script', cursive;
-            color: #ff4d6d; font-size: 1.2rem;
-        }
-
-        footer {
-            margin-top: 20px; font-size: 0.8rem; color: #aaa; text-align: center;
+            display: block; margin-top: 15px;
+            text-align: right; font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem; color: #d63384;
         }
     </style>
 </head>
 <body>
 
-    <div class="storybook">
+    <div class="card">
+        <img src="https://i.postimg.cc/gcvMfBtr/2c058fa4-4d93-4f67-939c-7becc3efbba9.jpg" class="profile-pic">
+        
         <h1>For My Dishika ❤️</h1>
         
-        <div class="message-section">
-            See dekh baby 😏 Hamesha thank you bolta rahunga 
-            ki meri life me aayi, har roz itna sukoon diya. 
-            Pehli baar hath pakadne ka feel, kandhe pe 
-            sone wala moment, first kiss ka heavenly 
-            touch, Uttam Nagar wala cute hug - har baar 
-            butterflies udte hai dil me. Har cheez jitni 
-            baar bhi ho, utni hi special lagti hai.<br><br>
+        <div class="message">
+            See dekh baby 😏 Hamesha thank you bolta rahunga ki meri life me aayi, har roz itna sukoon diya. 
+            Pehli baar hath pakadne ka feel, kandhe pe sone wala moment, first kiss ka heavenly touch, 
+            Uttam Nagar wala cute hug - har baar butterflies udte hai dil me. Har cheez jitni baar bhi ho, 
+            utni hi special lagti hai. <br><br>
             I love you Dishika 💖<br>
             And thanks for coming in my life 🎀💗
-            <div class="signature">~ your uduu bby’🫠✨</div>
+            <span class="signature">~ your uduu bby’🫠✨</span>
         </div>
 
-        <div class="voice-section" onclick="playVoice()">
-            <span id="icon">🎵</span>
-            <span class="play-btn" id="btnTxt">Play</span>
-        </div>
-
-        <div class="photo-gallery">
-            <img src="https://i.postimg.cc/mD8X7fX9/Whats-App-Image-2025-01-29-at-01-16-16.jpg" class="active">
-            <img src="https://i.postimg.cc/NfK6Y6Q5/Whats-App-Image-2025-01-29-at-01-16-35.jpg">
-            <img src="https://i.postimg.cc/ydp6p5vC/Whats-App-Image-2025-01-29-at-01-16-56.jpg">
-            <img src="https://i.postimg.cc/gcvMfBtr/2c058fa4-4d93-4f67-939c-7becc3efbba9.jpg">
-        </div>
-
-        <footer>Made with pure love for Dishika</footer>
+        <button class="voice-btn" onclick="playMusic()">
+            <span id="icon">🎶</span> &nbsp; <span id="txt">Play</span>
+        </button>
     </div>
 
     <audio id="audio" src="https://files.catbox.moe/7c0j1g.m4a"></audio>
 
     <script>
-        // Floating hearts
+        // Hearts animation
         function createHeart() {
             const h = document.createElement('div');
-            h.classList.add('heart-float');
+            h.classList.add('heart-particle');
             h.innerHTML = '❤️';
             h.style.left = Math.random() * 100 + 'vw';
             h.style.animationDuration = (Math.random() * 2 + 3) + 's';
             document.body.appendChild(h);
-            setTimeout(() => h.remove(), 4000);
+            setTimeout(() => h.remove(), 5000);
         }
-        setInterval(createHeart, 300);
+        setInterval(createHeart, 400);
 
-        // Voice Note
-        function playVoice() {
+        function playMusic() {
             const a = document.getElementById('audio');
             a.play();
-            document.getElementById('btnTxt').innerText = "Playing for you...";
+            document.getElementById('txt').innerText = "Playing for you...";
             document.getElementById('icon').innerText = "⏸️";
         }
-
-        // Auto Slider
-        let current = 0;
-        const imgs = document.querySelectorAll('.photo-gallery img');
-        setInterval(() => {
-            imgs[current].classList.remove('active');
-            current = (current + 1) % imgs.length;
-            imgs[current].classList.add('active');
-        }, 3500);
     </script>
 </body>
 </html>
