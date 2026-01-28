@@ -5,98 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dishika - My Love ❤️</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap');
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            background: #fff0f3;
-            font-family: 'Poppins', sans-serif;
-            display: flex; align-items: center; justify-content: center;
-            min-height: 100vh; overflow: hidden;
-            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #a1c4fd);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            overflow-x: hidden; 
+            position: relative;
+            padding: 20px;
         }
 
-        @keyframes gradientBG {
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .card {
-            width: 90%; max-width: 400px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(15px);
-            padding: 35px 25px;
-            border-radius: 30px;
-            text-align: center;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            position: relative; z-index: 10;
-        }
-
-        /* Purani wali Profile Photo style */
-        .profile-pic {
-            width: 140px; height: 140px;
-            border-radius: 50%;
-            border: 5px solid white;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.2);
-            object-fit: cover;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            color: #d63384; font-size: 2.5rem; margin-bottom: 15px;
-        }
-
-        .message {
-            font-size: 0.95rem; line-height: 1.7;
-            color: #444; margin-bottom: 25px;
-            text-align: left; background: rgba(255, 255, 255, 0.3);
-            padding: 20px; border-radius: 20px;
-            border-left: 4px solid #ff4d6d;
-        }
-
-        .voice-btn {
-            background: #ff4d6d; color: white;
-            padding: 12px 35px; border-radius: 50px;
-            cursor: pointer; display: inline-flex;
-            align-items: center; justify-content: center;
-            font-weight: 500; transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
-            border: none; outline: none;
-            font-family: 'Poppins', sans-serif;
-        }
-        .voice-btn:active { transform: scale(0.95); }
-
         /* Floating Hearts */
-        .heart-particle {
-            position: absolute; color: #ff4d6d;
-            font-size: 18px; animation: floatUp 5s linear infinite;
-            top: 100vh; pointer-events: none;
+        .heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.6);
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+            top: 100vh; z-index: 0;
         }
         @keyframes floatUp {
-            to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 30px 20px; 
+            border-radius: 30px;
+            text-align: center; 
+            color: #d63384;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 100%; 
+            max-width: 400px;
+            border: 1px solid rgba(255,255,255,0.5);
+            position: relative; 
+            z-index: 10;
+        }
+
+        /* Main Big Image */
+        .main-photo {
+            width: 180px; height: 180px; /* Thoda bada size */
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 0 25px rgba(214, 51, 132, 0.4);
+            object-fit: cover;
+            display: block;
+        }
+
+        h1 { font-size: 28px; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+
+        .voice-note {
+            background: #ff6b9d; color: white;
+            padding: 14px 45px; border-radius: 50px;
+            margin: 10px 0; cursor: pointer;
+            font-weight: bold; display: inline-block;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+            transition: 0.3s;
+            border: none;
+            outline: none;
+            font-size: 18px;
+        }
+        .voice-note:active { transform: scale(0.95); }
+
+        .message-box {
+            font-size: 15px; 
+            line-height: 1.6;
+            max-height: 0; 
+            opacity: 0;
+            overflow: hidden;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #444; 
+            background: rgba(255,255,255,0.6);
+            margin-top: 0;
+            border-radius: 20px;
+            text-align: left;
+        }
+        
+        .message-box.reveal {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 20px;
+            padding: 20px;
+            border-left: 6px solid #ff6b9d;
         }
 
         .signature {
             display: block; margin-top: 15px;
-            text-align: right; font-family: 'Dancing Script', cursive;
-            font-size: 1.3rem; color: #d63384;
+            text-align: right; font-weight: bold; color: #d63384; font-style: italic;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <img src="https://i.postimg.cc/gcvMfBtr/2c058fa4-4d93-4f67-939c-7becc3efbba9.jpg" class="profile-pic">
+    <div class="container">
+        <img src="https://i.postimg.cc/gcvMfBtr/2c058fa4-4d93-4f67-939c-7becc3efbba9.jpg" class="main-photo" alt="Dishika">
+
+        <h1>Dishika ❤️</h1>
         
-        <h1>For My Dishika ❤️</h1>
-        
-        <div class="message">
+        <div class="voice-note" onclick="startSurprise()">
+            <span id="btnIcon">🎶</span> &nbsp; <span id="btnText">Play</span>
+        </div>
+
+        <div class="message-box" id="mainMsg">
             See dekh baby 😏 Hamesha thank you bolta rahunga ki meri life me aayi, har roz itna sukoon diya. 
             Pehli baar hath pakadne ka feel, kandhe pe sone wala moment, first kiss ka heavenly touch, 
             Uttam Nagar wala cute hug - har baar butterflies udte hai dil me. Har cheez jitni baar bhi ho, 
@@ -105,32 +128,33 @@
             And thanks for coming in my life 🎀💗
             <span class="signature">~ your uduu bby’🫠✨</span>
         </div>
-
-        <button class="voice-btn" onclick="playMusic()">
-            <span id="icon">🎶</span> &nbsp; <span id="txt">Play</span>
-        </button>
     </div>
 
-    <audio id="audio" src="https://files.catbox.moe/7c0j1g.m4a"></audio>
+    <audio id="haareyaAudio" src="https://files.catbox.moe/7c0j1g.m4a"></audio>
 
     <script>
-        // Hearts animation
+        // Hearts Animation
         function createHeart() {
-            const h = document.createElement('div');
-            h.classList.add('heart-particle');
-            h.innerHTML = '❤️';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDuration = (Math.random() * 2 + 3) + 's';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
         }
         setInterval(createHeart, 400);
 
-        function playMusic() {
-            const a = document.getElementById('audio');
-            a.play();
-            document.getElementById('txt').innerText = "Playing for you...";
-            document.getElementById('icon').innerText = "⏸️";
+        // Play Surprise Function
+        function startSurprise() {
+            const audio = document.getElementById('haareyaAudio');
+            audio.play().catch(error => console.log("Audio play failed, user interaction needed."));
+            
+            const msg = document.getElementById('mainMsg');
+            msg.classList.add('reveal');
+            
+            document.getElementById('btnText').innerText = "Playing...";
+            document.getElementById('btnIcon').innerText = "⏸️";
         }
     </script>
 </body>
