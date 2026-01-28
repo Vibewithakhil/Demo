@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,76 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dishika - My Haareya ❤️</title>
     <style>
-        /* [Previous CSS same hai - copy paste mat karo, full code niche] */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #ff6b9d, #4ecdc4, #667eea);
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
             background-size: 400% 400%;
             animation: gradientShift 10s ease infinite;
             min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
         }
-        /* [Sab same CSS - space bachane ke liye short kiya] */
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Hearts Styles */
+        .heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.7);
+            font-size: 20px;
+            animation: floatUp 5s linear infinite;
+            top: 100vh;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            padding: 30px; border-radius: 25px;
+            text-align: center; color: #d63384;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            width: 85%; max-width: 400px;
+            border: 1px solid rgba(255,255,255,0.4);
+            position: relative; z-index: 10;
+        }
+
+        .profile-pic {
+            width: 140px; height: 140px;
+            border-radius: 50%; border: 4px solid white;
+            margin-bottom: 20px; 
+            box-shadow: 0 0 15px rgba(214, 51, 132, 0.3);
+        }
+
+        .voice-note {
+            background: #ff6b9d; color: white;
+            padding: 15px; border-radius: 50px;
+            margin: 20px 0; cursor: pointer;
+            font-weight: bold; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        .voice-note:active { transform: scale(0.95); }
+
+        .confession-card {
+            font-size: 14px; line-height: 1.6;
+            margin-top: 20px; opacity: 0; transition: 2s;
+            color: #444; background: rgba(255,255,255,0.4);
+            padding: 15px; border-radius: 15px;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <!-- ✅ DISHIKA PHOTO -->
-        <img src="https://i.postimg.cc/gcvMfBtr/2c058fa4-4d93-4f67-939c-7becc3efbba9.jpg" 
-             alt="Dishika" class="profile-pic" onclick="zoomPhoto()">
+        <img src="https://i.postimg.cc/gcvMfBtr/2c058fa4-4d93-4f67-939c-7becc3efbba9.jpg" class="profile-pic">
+        <h1>For My Dishika ❤️</h1>
+        <p style="font-size: 13px; color: #666; margin-top: 5px;">Hamesha thank you bolta rahunga ki meri life me aayi 💕</p>
         
-        <h1>Dishika - My Haareya ❤️</h1>
-        
-        <div class="typing-container">
-            <span class="typing-text">
-                See dekh baby 😏 Hamesha thank you bolta rahunga ki meri life me aayi 💕
-            </span>
-        </div>
-        
-        <!-- 🎵 HAAREYA VOICE NOTE - TUMHARA LINK ✅ -->
         <div class="voice-note" onclick="playHaareya()">
-            <div class="play-btn">🎶</div>
-            <div class="voice-text">Play Haareya for my baby...</div>
+            <span id="btnIcon">🎶</span> &nbsp; Play Haareya
         </div>
-        
-        <!-- 💌 ROMANTIC MEMORIES -->
-        <div class="confession-card" id="loveMsg" style="opacity:0;">
-            Har roz itna sukoon diya. Pehli baar hath pakadne ka feel, 
-            kandhe pe sone wala moment, first kiss ka heavenly touch, 
-            Uttam Nagar wala cute hug - har baar butterflies udte hai dil me.
-            <div class="signature">~ your uduu bby' 🫠✨</div>
+
+        <div class="confession-card" id="loveMsg">
+            "Har roz itna sukoon diya. Pehli baar hath pakadne ka feel, kandhe pe sone wala moment, first kiss... har baar butterflies udte hai dil me."
+            <br><br><strong>~ your uduu bby' 🫠✨</strong>
         </div>
-        
-        <!-- 🎼 HAAREYA LYRICS -->
-        <div class="lyrics-card" id="haareyaLyrics">
-            <strong>O Hareya Main Dil Haareya 🎶</strong><br><br>
-            Dekheya main chand dekheya<br>
-            Nooran wale sitare dekheya<br>
-            <em>Par tere jaisa na koi dekheya</em><br><br>
-            Lagta hai nigahon mein teri<br>
-            Bin dube rehna hi nahi<br>
-            <strong>Main haara tujhpe... oo</strong>
-        </div>
-        
-        <div class="footer">Made with ∞ love for my Haareya 🌹</div>
     </div>
 
-    <!-- 🎤 TUMHARA ACTUAL VOICE NOTE LINK ✅ -->
-    <audio id="haareyaAudio" src="https://files.catbox.moe/7c0j1g.m4a" preload="auto"></audio>
+    <audio id="haareyaAudio" src="https://files.catbox.moe/7c0j1g.m4a"></audio>
 
-    <!-- [JavaScript same - play function ready] -->
     <script>
+        // Hearts creation logic
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.fontSize = Math.random() * 10 + 15 + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 400);
+
         function playHaareya() {
             const audio = document.getElementById('haareyaAudio');
-            audio.play().then(() => {
-                document.querySelector('.voice-note').innerHTML = 
-                '<div class="play-btn">⏸️</div><div class="voice-text">Haareya playing for Dishika...</div>';
-                setTimeout(() => {
-                    document.getElementById('loveMsg').style.opacity = '1';
-                }, 1000);
-            }).catch(e => {
-                alert('Voice note download karke suno meri Haareya 🎧');
-            });
+            audio.play().catch(() => alert("Speaker volume badhao baby! 🎧"));
+            document.getElementById('loveMsg').style.opacity = '1';
+            document.getElementById('btnIcon').innerText = "⏸️";
         }
     </script>
 </body>
