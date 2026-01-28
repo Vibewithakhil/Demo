@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dishika - My Love ❤️</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #a1c4fd);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.6);
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+            top: 100vh; z-index: 0;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 25px; border-radius: 30px;
+            text-align: center; color: #d63384;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 90%; max-width: 420px;
+            border: 1px solid rgba(255,255,255,0.5);
+            position: relative; z-index: 10;
+        }
+
+        /* Image Slider */
+        .slider {
+            width: 160px; height: 160px;
+            margin: 0 auto 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 20px rgba(214, 51, 132, 0.3);
+        }
+        .slider img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slider img.active { opacity: 1; }
+
+        .voice-note {
+            background: #ff6b9d; color: white;
+            padding: 12px 30px; border-radius: 50px;
+            margin: 20px 0; cursor: pointer;
+            font-weight: bold; display: inline-block;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+            transition: 0.3s;
+        }
+        .voice-note:active { transform: scale(0.9); }
+
+        .message-box {
+            font-size: 15px; line-height: 1.6;
+            margin-top: 15px; opacity: 0; transition: 2s;
+            color: #444; background: rgba(255,255,255,0.5);
+            padding: 20px; border-radius: 20px;
+            text-align: left; border-left: 5px solid #ff6b9d;
+        }
+        .signature {
+            display: block; margin-top: 10px;
+            text-align: right; font-weight: bold; color: #d63384;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="slider" id="photoSlider">
+            <img src="https://i.postimg.cc/gcvMfBtr/2c058fa4-4d93-4f67-939c-7becc3efbba9.jpg" class="active">
+            <img src="https://i.postimg.cc/mD8X7fX9/Whats-App-Image-2025-01-29-at-01-16-16.jpg">
+            <img src="https://i.postimg.cc/NfK6Y6Q5/Whats-App-Image-2025-01-29-at-01-16-35.jpg">
+            <img src="https://i.postimg.cc/ydp6p5vC/Whats-App-Image-2025-01-29-at-01-16-56.jpg">
+        </div>
+
+        <h1>Dishika ❤️</h1>
+        
+        <div class="voice-note" onclick="startSurprise()">
+            <span id="btnIcon">🎶</span> &nbsp; <span id="btnText">Play</span>
+        </div>
+
+        <div class="message-box" id="mainMsg">
+            See dekh baby 😏 Hamesha thank you bolta rahunga ki meri life me aayi, har roz itna sukoon diya. 
+            Pehli baar hath pakadne ka feel, kandhe pe sone wala moment, first kiss ka heavenly touch, 
+            Uttam Nagar wala cute hug - har baar butterflies udte hai dil me. Har cheez jitni baar bhi ho, 
+            utni hi special lagti hai. <br><br>
+            I love you Dishika 💖<br>
+            And thanks for coming in my life 🎀💗
+            <span class="signature">~ your uduu bby’🫠✨</span>
+        </div>
+    </div>
+
+    <audio id="haareyaAudio" src="https://files.catbox.moe/7c0j1g.m4a"></audio>
+
+    <script>
+        // Photo Slider Logic
+        let currentImg = 0;
+        const imgs = document.querySelectorAll('#photoSlider img');
+        function changeImg() {
+            imgs[currentImg].classList.remove('active');
+            currentImg = (currentImg + 1) % imgs.length;
+            imgs[currentImg].classList.add('active');
+        }
+        setInterval(changeImg, 3000);
+
+        // Hearts Animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 400);
+
+        // Play Surpise
+        function startSurprise() {
+            const audio = document.getElementById('haareyaAudio');
+            audio.play();
+            document.getElementById('mainMsg').style.opacity = '1';
+            document.getElementById('btnText').innerText = "Playing...";
+            document.getElementById('btnIcon').innerText = "⏸️";
+        }
+    </script>
+</body>
+</html>
